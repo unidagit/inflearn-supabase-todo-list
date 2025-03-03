@@ -3,6 +3,7 @@ import { Checkbox, IconButton, Spinner } from "@material-tailwind/react";
 import { useMutation } from "@tanstack/react-query";
 import { deleteTodo, updateTodo } from "actions/todo-action";
 import { queryClient } from "app/config/reactquery-client-provider";
+import dayjs from "dayjs";
 import React, { useState } from "react";
 
 export type TodoType = {
@@ -58,7 +59,12 @@ export default function Todo({ todo }: { todo: TodoType }) {
           className="flex-1 border-b-black border-b pb-2"
         />
       ) : (
-        <p className={`flex-1 ${completed && "line line-through"}`}>{title}</p>
+        <>
+          <p className={`flex-1 ${completed && "line line-through"}`}>
+            {title}
+          </p>
+          <p>{dayjs(todo.created_at).format("YYYY-MM-DD HH:mm:ss")}</p>
+        </>
       )}
       {isEditing ? (
         <IconButton
