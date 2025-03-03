@@ -12,6 +12,7 @@ export type Database = {
       todo: {
         Row: {
           completed: boolean | null
+          completed_at: string | null
           created_at: string | null
           id: number
           title: string
@@ -19,6 +20,7 @@ export type Database = {
         }
         Insert: {
           completed?: boolean | null
+          completed_at?: string | null
           created_at?: string | null
           id?: number
           title: string
@@ -26,6 +28,7 @@ export type Database = {
         }
         Update: {
           completed?: boolean | null
+          completed_at?: string | null
           created_at?: string | null
           id?: number
           title?: string

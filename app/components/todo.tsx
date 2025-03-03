@@ -12,6 +12,7 @@ export type TodoType = {
   id: number;
   title: string;
   updated_at: string;
+  completed_at: string;
 };
 
 export default function Todo({ todo }: { todo: TodoType }) {
@@ -63,7 +64,17 @@ export default function Todo({ todo }: { todo: TodoType }) {
           <p className={`flex-1 ${completed && "line line-through"}`}>
             {title}
           </p>
-          <p>{dayjs(todo.created_at).format("YYYY-MM-DD HH:mm:ss")}</p>
+
+          <p>
+            업데이트 시간:
+            {dayjs(todo.created_at).format("YYYY-MM-DD HH:mm:ss")}
+          </p>
+          {todo.completed_at && (
+            <p>
+              완료 시간:
+              {dayjs(todo.completed_at).format("YYYY-MM-DD HH:mm:ss")}
+            </p>
+          )}
         </>
       )}
       {isEditing ? (

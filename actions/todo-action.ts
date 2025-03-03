@@ -51,6 +51,7 @@ export async function updateTodo(todo: TodoRowUpdate) {
     .update({
       ...todo,
       updated_at: new Date().toISOString(),
+      completed_at: new Date().toISOString(),
     })
     .eq("id", todo.id); // 📌 id가 일치하는 행만 업데이트
 
